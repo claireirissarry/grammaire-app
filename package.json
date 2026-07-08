@@ -1,0 +1,13 @@
+﻿{
+  "name": "grammaire-app",
+  "version": "1.0.0",
+  "description": "Application éducative de grammaire française avec thème Mondial 2026",
+  "private": true,
+  "scripts": {
+    "dev": "echo 'Static app - open index.html'",
+    "build": "echo 'No build needed for static site'"
+  },
+  "keywords": ["grammaire", "education", "football"],
+  "author": "Claire Irissarry",
+  "license": "MIT"
+}

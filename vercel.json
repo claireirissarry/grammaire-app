@@ -1,5 +1,19 @@
 ﻿{
-  "buildCommand": "echo 'Static HTML project'",
-  "outputDirectory": ".",
-  "framework": null
+  "framework": null,
+  "buildCommand": null,
+  "outputDirectory": null,
+  "public": true,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/index.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "max-age=3600"
+        }
+      ]
+    }
+  ]
 }

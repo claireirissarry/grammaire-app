@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grammaire Mondial 2026 — Objectif Finale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@600;700&family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#041E42;
+    --ink-2:#0A2C5C;
+    --ink-3:#1155BF;
+    --parchment:#FFFFFF;
+    --parchment-2:#E8EEF9;
+    --amber:#ED2939;
+    --amber-2:#C8102E;
+    --rust:#E4572E;
+    --teal:#1FAE6E;
+    --teal-2:#12824F;
+    --ink-text:#FFFFFF;
+    --dark-text:#0A2C5C;
+    --shadow: 0 10px 30px rgba(0,0,0,.35);
+    --radius: 16px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1200px 700px at 10% -10%, #0c2f66 0%, transparent 60%),
+      radial-gradient(1000px 800px at 100% 0%, #0a2450 0%, transparent 55%),
+      var(--ink);
+    color:var(--ink-text);
+    font-family:'Poppins', sans-serif;
+    min-height:100vh;
+    background-attachment:fixed;
+  }
+  ::selection{ background: var(--amber); color:var(--ink); }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+
+  a{color:inherit;}
+  button{font-family:inherit; cursor:pointer;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-size:.7rem;
+    color:var(--amber);
+    font-weight:700;
+  }
+  h1,h2,h3, .display{ font-family:'Bebas Neue', sans-serif; letter-spacing:.03em; }
+
+  /* ===== Layout ===== */
+  .wrap{ max-width:1180px; margin:0 auto; padding:22px 18px 70px; }
+
+  header.top{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    flex-wrap:wrap;
+    padding-bottom:18px; margin-bottom:22px;
+    border-bottom:2px dashed rgba(244,236,216,.25);
+  }
+  .brand{ display:flex; align-items:center; gap:14px; }
+  .brand .stamp{
+    width:58px; height:58px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, var(--amber), var(--amber-2) 70%);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.6rem; box-shadow:var(--shadow);
+    border:3px solid rgba(20,33,61,.5);
+    flex:none;
+  }
+  .brand h1{ font-size:1.5rem; margin:0; color:var(--parchment); }
+  .brand p{ margin:2px 0 0; font-size:.8rem; color:var(--parchment-2); opacity:.8; }
+
+  .rank-card{
+    background:var(--ink-2); border:1px solid rgba(244,236,216,.15);
+    border-radius:var(--radius); padding:10px 18px; display:flex; align-items:center; gap:14px;
+    box-shadow: var(--shadow);
+  }
+  .rank-card .rank-icon{ font-size:1.6rem; }
+  .rank-card .rank-info{ min-width:170px; }
+  .rank-card .rank-name{ font-weight:700; font-size:.92rem; color:var(--amber); }
+  .rank-card .xp-track{ height:8px; border-radius:6px; background:rgba(244,236,216,.15); margin-top:6px; overflow:hidden; }
+  .rank-card .xp-fill{ height:100%; background:linear-gradient(90deg, var(--teal), var(--amber)); border-radius:6px; transition:width .5s ease; }
+  .rank-card .xp-num{ font-family:'JetBrains Mono',monospace; font-size:.7rem; color:var(--parchment-2); margin-top:4px;}
+
+  nav.tabs{
+    display:flex; gap:10px; flex-wrap:wrap; margin-bottom:24px;
+  }
+  .tab-btn{
+    background:var(--ink-2); color:var(--parchment); border:1px solid rgba(244,236,216,.18);
+    padding:10px 16px; border-radius:999px; font-size:.85rem; font-weight:600;
+    display:flex; align-items:center; gap:8px; transition:transform .15s ease, background .15s ease;
+  }
+  .tab-btn:hover{ transform:translateY(-2px); background:var(--ink-3); }
+  .tab-btn.active{ background:var(--amber); color:var(--ink); border-color:transparent; }
+  .tab-btn .lock{ opacity:.5; font-size:.75rem; }
+
+  section.view{ display:none; animation:fadeIn .35s ease; }
+  section.view.active{ display:block; }
+  @keyframes fadeIn{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;} }
+
+  /* ===== Cards / dossier ===== */
+  .dossier{
+    background:var(--parchment);
+    color:var(--dark-text);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:24px 26px;
+    position:relative;
+    border:1px solid rgba(0,0,0,.06);
+  }
+  .dossier::before{
+    content:"";
+    position:absolute; top:0; left:26px; width:64px; height:14px;
+    background:var(--amber); border-radius:0 0 6px 6px;
+  }
+  .case-title{ font-size:1.3rem; margin:6px 0 4px; color:var(--ink); }
+  .case-sub{ color:#3d4f6e; font-size:.9rem; margin:0 0 16px; }
+
+  .note{
+    font-family:'Caveat', cursive;
+    background:#FFF6D6;
+    border:1px solid #e9dca0;
+    box-shadow:2px 3px 8px rgba(0,0,0,.15);
+    padding:14px 16px 10px;
+    border-radius:2px;
+    font-size:1.25rem;
+    line-height:1.25;
+    position:relative;
+    transform:rotate(-1.4deg);
+    margin:16px 0;
+    color:#4a3f1f;
+  }
+  .note::before{
+    content:"📌"; position:absolute; top:-14px; left:14px; font-size:1.1rem; transform:rotate(12deg);
+  }
+  .note b{ color:var(--rust); }
+
+  .lesson-block{ margin:14px 0; line-height:1.65; font-size:.98rem; }
+  .lesson-block h4{ margin:0 0 6px; color:var(--ink-3); font-family:'Bebas Neue',sans-serif; font-size:1rem;}
+  .lesson-block ul{ margin:6px 0; padding-left:22px; }
+  .ex{ font-style:italic; color:#3f6f68; }
+  .tag{
+    display:inline-block; font-family:'JetBrains Mono',monospace; font-size:.72rem; font-weight:700;
+    padding:2px 8px; border-radius:5px; margin-right:4px;
+  }
+  .tag.S{ background:#dfeaff; color:#2851a3;}
+  .tag.V{ background:#ffe1d6; color:#b6431e;}
+  .tag.CC{ background:#e4ffe0; color:#2c7a2c;}
+  .tag.CV{ background:#fce8ff; color:#8a2c9e;}
+
+  .btn{
+    border:none; border-radius:10px; padding:11px 20px; font-weight:700; font-size:.9rem;
+    background:var(--ink-3); color:var(--parchment); transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .btn:hover{ transform:translateY(-2px); box-shadow:0 6px 14px rgba(0,0,0,.25); }
+  .btn.primary{ background:var(--amber); color:var(--ink); }
+  .btn.ghost{ background:transparent; border:2px solid var(--ink-3); color:var(--ink-3); }
+  .btn:disabled{ opacity:.45; cursor:not-allowed; transform:none; box-shadow:none;}
+
+  /* tier tabs inside module */
+  .tier-row{ display:flex; gap:10px; margin:18px 0; flex-wrap:wrap; }
+  .tier-chip{
+    flex:1 1 160px; background:var(--parchment-2); border:2px solid transparent; border-radius:12px;
+    padding:12px 14px; text-align:left; color:var(--ink);
+  }
+  .tier-chip .tname{ font-weight:700; font-size:.9rem; }
+  .tier-chip .tbloom{ font-size:.72rem; color:#4f6180; }
+  .tier-chip .tscore{ font-family:'JetBrains Mono',monospace; font-size:.75rem; margin-top:6px; display:block;}
+  .tier-chip.selected{ border-color:var(--amber-2); background:#ffe6e6; }
+  .tier-chip.locked{ opacity:.5; }
+  .tier-chip.passed .tname::after{ content:" ✔"; color:var(--teal-2); }
+
+  /* quiz */
+  .quiz-progress{ display:flex; gap:6px; margin:14px 0; }
+  .quiz-progress span{ flex:1; height:6px; border-radius:6px; background:rgba(0,0,0,.12); }
+  .quiz-progress span.done{ background:var(--teal-2); }
+  .quiz-progress span.wrong{ background:var(--rust); }
+  .quiz-progress span.current{ background:var(--amber-2); }
+
+  .q-prompt{ font-size:1.08rem; margin:10px 0 16px; line-height:1.6; }
+  .q-prompt mark{ background:#ffe27a; padding:1px 5px; border-radius:4px; }
+  .opt-list{ display:grid; gap:10px; }
+  .opt{
+    text-align:left; background:#fff; border:2px solid #cdd8ec; border-radius:12px; padding:12px 16px;
+    font-size:.94rem; color:var(--dark-text); transition:border-color .15s ease, background .15s ease;
+  }
+  .opt:hover{ border-color:var(--amber-2); }
+  .opt.correct{ background:#e2f6e9; border-color:var(--teal-2); }
+  .opt.incorrect{ background:#fbe3dd; border-color:var(--rust); }
+  .opt:disabled{ cursor:default; }
+
+  .fill-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:8px; }
+  .fill-row input, textarea.open-input{
+    flex:1 1 240px; padding:12px 14px; border-radius:10px; border:2px solid #cdd8ec; font-size:.95rem;
+    font-family:'Poppins',sans-serif;
+  }
+  textarea.open-input{ width:100%; min-height:90px; resize:vertical; }
+  .fill-row input:focus, textarea.open-input:focus{ outline:none; border-color:var(--amber-2); }
+
+  .feedback{ margin-top:14px; padding:12px 14px; border-radius:10px; font-size:.9rem; display:none; }
+  .feedback.show{ display:block; }
+  .feedback.ok{ background:#e2f6e9; color:#1e6b4f; border:1px solid #b7e3cb;}
+  .feedback.ko{ background:#fbe3dd; color:#9c3722; border:1px solid #f2c1b0;}
+  .feedback .expl{ margin-top:6px; opacity:.85; }
+
+  .checklist{ background:#fff; border:2px dashed #e3d7b4; border-radius:10px; padding:12px 14px; margin-top:10px; font-size:.9rem;}
+  .checklist label{ display:block; margin:6px 0; }
+
+  .q-footer{ display:flex; justify-content:space-between; align-items:center; margin-top:18px; gap:10px; flex-wrap:wrap; }
+
+  .result-card{ text-align:center; padding:30px 10px; }
+  .result-card .big{ font-size:2.6rem; }
+  .badge-pop{
+    display:inline-flex; flex-direction:column; align-items:center; gap:6px; margin:14px;
+    background:var(--parchment-2); border-radius:16px; padding:16px 22px; box-shadow:var(--shadow);
+    animation: pop .5s ease;
+  }
+  @keyframes pop{ 0%{ transform:scale(.5); opacity:0;} 70%{ transform:scale(1.08);} 100%{ transform:scale(1); opacity:1;} }
+  .badge-pop .em{ font-size:2.2rem; }
+  .badge-pop .nm{ font-weight:700; font-size:.85rem; color:var(--ink); }
+
+  /* dashboard */
+  .grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px; margin:18px 0; }
+  .stat-card{ background:var(--ink-2); border:1px solid rgba(244,236,216,.15); border-radius:14px; padding:16px 18px; }
+  .stat-card .num{ font-family:'JetBrains Mono',monospace; font-size:1.6rem; color:var(--amber); font-weight:700; }
+  .stat-card .lab{ font-size:.78rem; color:var(--parchment-2); opacity:.85; }
+
+  .badges-shelf{ display:flex; gap:14px; flex-wrap:wrap; margin:14px 0 6px; }
+  .badge-slot{
+    width:110px; text-align:center; background:var(--ink-2); border-radius:14px; padding:14px 8px;
+    border:1px solid rgba(244,236,216,.15);
+  }
+  .badge-slot.locked{ opacity:.35; filter:grayscale(1); }
+  .badge-slot .em{ font-size:1.9rem; }
+  .badge-slot .nm{ font-size:.72rem; margin-top:6px; color:var(--parchment); }
+
+  table.journal{ width:100%; border-collapse:collapse; margin-top:10px; font-size:.85rem;}
+  table.journal th, table.journal td{ text-align:left; padding:8px 10px; border-bottom:1px solid rgba(244,236,216,.15);}
+  table.journal th{ color:var(--amber); font-family:'JetBrains Mono',monospace; font-size:.72rem; text-transform:uppercase; letter-spacing:.06em;}
+
+  .parent-toggle{
+    position:fixed; bottom:18px; right:18px; z-index:20;
+    background:var(--amber); color:var(--ink); border:none; border-radius:999px;
+    padding:12px 18px; font-weight:700; box-shadow:var(--shadow); font-size:.85rem;
+  }
+
+  .ped-table{ width:100%; border-collapse:collapse; margin:10px 0 20px; font-size:.85rem;}
+  .ped-table th, .ped-table td{ border:1px solid #cdd8ec; padding:8px 10px; text-align:left; vertical-align:top;}
+  .ped-table th{ background:#dde9fb; }
+
+  footer.foot{ text-align:center; color:var(--parchment-2); opacity:.55; font-size:.75rem; margin-top:40px; }
+  @media (max-width:640px){
+    .brand h1{ font-size:1.15rem; }
+    .rank-card{ width:100%; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="brand">
+      <div class="stamp">⚽</div>
+      <div>
+        <h1>Grammaire Mondial 2026</h1>
+        <p>Objectif Finale du 19 juillet — Irissarry Stadium · spécial 6<sup>e</sup>, Cycle 3</p>
+      </div>
+    </div>
+    <div class="rank-card">
+      <div class="rank-icon" id="rankIcon">🎽</div>
+      <div class="rank-info">
+        <div class="rank-name" id="rankName">Espoir du centre de formation</div>
+        <div class="xp-track"><div class="xp-fill" id="xpFill" style="width:0%"></div></div>
+        <div class="xp-num" id="xpNum">0 XP</div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabsNav"></nav>
+
+  <section class="view" id="view-dashboard">
+    <div class="dossier">
+      <span class="eyebrow">Centre d'entraînement</span>
+      <h2 class="case-title">Tableau de bord du sélectionneur</h2>
+      <p class="case-sub">Chaque match gagné te rapproche du grade de <b>Candidat au Ballon d'Or</b>. Choisis un match dans le menu ci-dessus pour commencer, ou reprends l'entraînement là où tu t'es arrêté(e).</p>
+
+      <div class="grid" id="statGrid"></div>
+
+      <h3 style="font-family:'Bebas Neue',sans-serif; font-size:1.2rem; margin-top:26px;">Ton palmarès</h3>
+      <div class="badges-shelf" id="badgeShelf"></div>
+
+      <h3 style="font-family:'Bebas Neue',sans-serif; font-size:1.2rem; margin-top:26px;">Feuille de match</h3>
+      <p class="case-sub" style="margin-top:-6px;">L'historique de tes entraînements — reviens t'entraîner régulièrement, la mémoire aime les révisions espacées, comme les stages avant un Mondial !</p>
+      <table class="journal" id="journalTable">
+        <thead><tr><th>Date</th><th>Match</th><th>Niveau</th><th>Score</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="view" id="view-module">
+    <div class="dossier" id="moduleDossier"></div>
+  </section>
+
+  <section class="view" id="view-parents">
+    <div class="dossier">
+      <span class="eyebrow">Espace parents / enseignant</span>
+      <h2 class="case-title">L'ingénierie pédagogique du dossier</h2>
+      <p class="case-sub">Ce jeu a été conçu comme une formation courte : objectifs mesurables, alternance théorie/pratique, évaluation progressive et suivi dans le temps.</p>
+
+      <div class="lesson-block">
+        <h4>🎯 Objectifs — méthode des 3C de Mager + taxonomie de Bloom</h4>
+        <table class="ped-table">
+          <thead><tr><th>Match</th><th>Comportement attendu (verbe de Bloom)</th><th>Conditions</th><th>Critère de réussite</th></tr></thead>
+          <tbody>
+            <tr><td>1. Sujet / Verbe / CC</td><td>Identifier et classer (Comprendre → Analyser)</td><td>À partir de phrases simples, sans aide</td><td>≥ 70% de bonnes réponses sur chaque niveau</td></tr>
+            <tr><td>2. COD / COI</td><td>Distinguer et justifier (Analyser → Évaluer)</td><td>Phrases avec pièges CC/COI</td><td>≥ 70% + justification correcte au niveau Défi</td></tr>
+            <tr><td>3. Leur / Leurs</td><td>Appliquer la règle d'accord (Appliquer)</td><td>Phrases à trous, sans dictionnaire</td><td>≥ 70%, 0 confusion pronom/déterminant</td></tr>
+            <tr><td>4. Négation</td><td>Transformer une phrase (Appliquer → Créer)</td><td>Temps simples et composés</td><td>≥ 70% + une production libre correcte</td></tr>
+            <tr><td>5. Futur simple</td><td>Transposer un texte (Appliquer → Créer)</td><td>Verbes réguliers et irréguliers du programme</td><td>≥ 70% + transposition libre cohérente</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="lesson-block">
+        <h4>🔁 Séquence — cycle de Kolb</h4>
+        <p>Chaque match suit les 4 temps de Kolb : <b>1. Expérimentation</b> (l'enfant tente une classification ou une transformation dans le niveau « Découverte » avant toute explication magistrale) → <b>2. Analyse</b> (feedback immédiat + explication après chaque question) → <b>3. Apport théorique</b> (l'onglet « Cours », avec astuces et pièges) → <b>4. Mise en pratique</b> (niveaux « Entraînement » et « Défi », puis mission bonus de création libre).</p>
+      </div>
+
+      <div class="lesson-block">
+        <h4>🏛️ Évaluation — pyramide de Miller</h4>
+        <ul>
+          <li><b>Sait</b> : questions à choix multiples de rappel (niveau Découverte).</li>
+          <li><b>Sait comment</b> : classification et application guidée (niveau Entraînement).</li>
+          <li><b>Montre comment</b> : transformations et cas pièges (niveau Défi).</li>
+          <li><b>Fait</b> : mission bonus de production libre (auto-évaluée avec grille de critères), la seule étape non chronométrée et non jugée automatiquement — l'enfant s'auto-positionne, ce qui développe son autonomie métacognitive, particulièrement utile pour un profil HPI.</li>
+        </ul>
+      </div>
+
+      <div class="lesson-block">
+        <h4>📈 Suivi dans la durée — modèle de Kirkpatrick</h4>
+        <ul>
+          <li><b>Niveau 1 (réaction)</b> : univers ludique du Mondial 2026, badges et progression visuelle pour maintenir l'engagement.</li>
+          <li><b>Niveau 2 (apprentissage)</b> : scores par niveau et par match, stockés localement.</li>
+          <li><b>Niveau 3 (comportement)</b> : la « Feuille de match » horodate chaque session — encouragez une reprise espacée (J+1, J+7, J+21) plutôt qu'une série de sessions groupées, pour ancrer la mémorisation à long terme, comme un plan d'entraînement avant un Mondial.</li>
+          <li><b>Niveau 4 (résultats)</b> : le grade global (Dreyfus, ci-dessous) synthétise la progression réelle sur l'ensemble du programme visé, à comparer aux attendus de fin de CM2 / repères 6<sup>e</sup>.</li>
+        </ul>
+      </div>
+
+      <div class="lesson-block">
+        <h4>🥇 Progression de l'expertise — modèle de Dreyfus</h4>
+        <table class="ped-table">
+          <thead><tr><th>XP cumulée</th><th>Grade</th><th>Posture d'accompagnement recommandée</th></tr></thead>
+          <tbody>
+            <tr><td>0–19%</td><td>Espoir du centre de formation (novice)</td><td>Règles explicites, exemples systématiques, pas d'improvisation demandée.</td></tr>
+            <tr><td>20–39%</td><td>Titulaire en sélection jeunes (débutant avancé)</td><td>Cas concrets variés, encore beaucoup de guidage.</td></tr>
+            <tr><td>40–59%</td><td>Titulaire en club professionnel (compétent)</td><td>Résolution autonome de cas standards, retours différés possibles.</td></tr>
+            <tr><td>60–79%</td><td>International A (performant)</td><td>Cas pièges, justification exigée, autonomie large.</td></tr>
+            <tr><td>80–100%</td><td>Candidat au Ballon d'Or (expert)</td><td>Production libre, transfert à des textes réels, l'enfant peut « enseigner » la règle à un pair.</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:.85rem;">Références de contenu : Attendus de fin d'année de CM2 (Éduscol) et Programme de français pour le cycle 3 — voir aussi <a href="https://www.education.gouv.fr/sites/default/files/programme-de-fran-ais-pour-le-cycle-3-439824.pdf" target="_blank" rel="noopener">le programme officiel</a>.</p>
+      </div>
+
+      <button class="btn ghost" id="resetBtn">Réinitialiser toute la progression</button>
+    </div>
+  </section>
+
+  <footer class="foot">Fait avec ⚽ pour un futur Ballon d'Or de 6<sup>e</sup> — progression enregistrée uniquement sur cet appareil.</footer>
+</div>
+
+<button class="parent-toggle" id="parentToggle">👪 Espace parents</button>
+
+<script>
+/* ============================= DATA ============================= */
+
+const RANKS = [
+  {min:0, name:"Espoir du centre de formation", icon:"🎽"},
+  {min:20, name:"Titulaire en sélection jeunes", icon:"🥅"},
+  {min:40, name:"Titulaire en club professionnel", icon:"🏟️"},
+  {min:60, name:"International A", icon:"🌍"},
+  {min:80, name:"Candidat au Ballon d'Or", icon:"🏆"}
+];
+
+const MODULES = [
+{
+  id:"m1", num:1, icon:"⚽",
+  title:"Sujet, verbe & complément de phrase",
+  venue:"Estadio Azteca, Mexico City — Match d'ouverture",
+  badge:{name:"Le Dribbleur comme Dembélé", emoji:"🌀"},
+  lesson:`
+    <div class="lesson-block">
+      <h4>La phrase minimale</h4>
+      <p>Toute phrase a besoin d'un <span class="tag S">Sujet</span> et d'un <span class="tag V">Verbe</span>. Le reste est souvent facultatif.</p>
+      <p class="ex">Les supporters chantent. → Sujet : « Les supporters » · Verbe : « chantent ».</p>
+    </div>
+    <div class="lesson-block">
+      <h4>Le complément de phrase (CC)</h4>
+      <p><span class="tag CC">CC</span> donne une précision de temps, lieu, cause ou manière. Il est <b>mobile</b> (on peut le déplacer) et <b>supprimable</b> (la phrase reste correcte sans lui).</p>
+      <p class="ex">Hier, l'équipe de Norvège s'est qualifiée au stade. → « Hier » et « au stade » peuvent bouger ou disparaître : « L'équipe de Norvège s'est qualifiée. » reste correct.</p>
+    </div>
+    <div class="lesson-block">
+      <h4>Le complément du verbe</h4>
+      <p><span class="tag CV">Complément du verbe</span> (COD/COI, étudiés en détail dans le Match n°2) dépend directement du verbe : on ne peut ni le déplacer, ni le supprimer sans casser le sens.</p>
+      <p class="ex">Haaland marque un but. → « un but » ne peut pas partir : « Haaland marque » tout court ne dit plus la même chose.</p>
+    </div>
+    <div class="note">Astuce du coach : pour reconnaître un <b>CC</b>, essaie de le <b>déplacer</b> en tête de phrase et de le <b>supprimer</b>. Si la phrase reste correcte dans les deux cas → c'est un CC ! Un CC, ça bouge partout sur le terrain, un peu comme un dribble de Dembélé.</div>
+  `,
+  tiers:[
+    { name:"Découverte", bloom:"Mémoriser / Comprendre", questions:[
+      {type:"mcq", prompt:"Quel est le verbe conjugué dans : « Les attaquants pressent la défense pendant tout le match. » ?", options:["pressent","attaquants","défense","match"], correct:0, explanation:"« pressent » est le seul mot qui se conjugue ici : c'est le verbe."},
+      {type:"mcq", prompt:"Quel est le sujet dans : « Avant le coup d'envoi, les deux capitaines échangent un fanion. » ?", options:["Avant le coup d'envoi","les deux capitaines","échangent","un fanion"], correct:1, explanation:"« les deux capitaines » font l'action d'échanger : c'est le sujet du verbe « échangent »."},
+      {type:"mcq", prompt:"Un complément de phrase (CC) est...", options:["mobile et supprimable","toujours au début de la phrase","obligatoire pour que la phrase ait un sens","toujours introduit par « que »"], correct:0, explanation:"C'est bien sa définition : on peut le déplacer et le supprimer sans rendre la phrase incorrecte."},
+      {type:"mcq", prompt:"Quelles sont les deux manipulations qui permettent de repérer un complément de phrase ?", options:["Le déplacement et la suppression","La conjugaison et l'accord","Le pluriel et le féminin","La majuscule et le point"], correct:0, explanation:"On teste en déplaçant le groupe et en le supprimant : s'il ne gêne pas la phrase, c'est un CC."}
+    ]},
+    { name:"Entraînement", bloom:"Appliquer / Analyser", questions:[
+      {type:"mcq", prompt:"Dans « Pendant la finale, Olise adresse une passe décisive. », quel groupe est un complément de phrase (CC) ?", options:["Pendant la finale","Olise","adresse","une passe décisive"], correct:0, explanation:"« Pendant la finale » se déplace et se supprime facilement : c'est un CC de temps."},
+      {type:"mcq", prompt:"Dans « Au coup de sifflet, les joueurs entrent calmement sur la pelouse. », combien de compléments de phrase (CC) repères-tu ?", options:["0","1","2","3"], correct:2, explanation:"« Au coup de sifflet » (temps) et « calmement » (manière) sont tous les deux des CC : ils sont mobiles et supprimables."},
+      {type:"mcq", prompt:"Dans « Les Norvégiens ont célébré leur qualification sur la pelouse. », quel groupe peut-on supprimer ET déplacer sans problème ?", options:["sur la pelouse","leur qualification","Les Norvégiens","ont célébré"], correct:0, explanation:"« sur la pelouse » est un CC de lieu : « Sur la pelouse, les Norvégiens ont célébré leur qualification. » fonctionne aussi."},
+      {type:"mcq", prompt:"Dans « Demain, les Bleus arriveront au stade en bus climatisé. », combien de CC repères-tu ?", options:["0","1","2","3"], correct:2, explanation:"« Demain » (temps) et « en bus climatisé » (moyen) sont deux compléments de phrase."}
+    ]},
+    { name:"Défi", bloom:"Analyser / Évaluer / Créer", questions:[
+      {type:"mcq", prompt:"Dans « Devant les buts vides surgissait Haaland. », quel est le sujet du verbe « surgissait » ?", options:["Devant les buts vides","Haaland","surgissait","les buts vides"], correct:1, explanation:"Le sujet peut être placé après le verbe (sujet inversé) : c'est bien « Haaland » qui surgit."},
+      {type:"mcq", prompt:"Dans « Bientôt, à Irissarry Stadium, résonnera le coup de sifflet final. », que peux-tu dire ?", options:["« Bientôt » et « à Irissarry Stadium » sont deux CC, « le coup de sifflet final » est le sujet inversé","« le coup de sifflet final » est un complément du verbe","« résonnera » est le sujet","il n'y a aucun CC dans cette phrase"], correct:0, explanation:"Deux CC en tête de phrase, puis le verbe, puis le sujet placé après (sujet inversé) : une belle phrase de commentateur !"},
+      {type:"mcq", prompt:"Pourquoi ne peut-on pas supprimer « un but » dans « Haaland marque un but. » sans changer le sens ?", options:["Parce que c'est un complément du verbe, indispensable au sens de « marquer quelque chose »","Parce que c'est un complément de phrase","Parce que c'est le sujet","Parce que c'est un adjectif"], correct:0, explanation:"« un but » n'est ni mobile ni supprimable : il dépend directement du verbe « marquer »."},
+      {type:"open", prompt:"Mission bonus : écris une phrase sur le Mondial 2026 avec UN complément de phrase de temps ET UN complément de phrase de lieu (les deux doivent pouvoir être supprimés sans casser la phrase).", checklist:["Ma phrase contient un sujet et un verbe qui se suffisent à eux-mêmes.","J'ai ajouté un groupe qui indique QUAND (et je peux le supprimer).","J'ai ajouté un groupe qui indique OÙ (et je peux le supprimer)."]}
+    ]}
+  ]
+},
+{
+  id:"m2", num:2, icon:"🧩",
+  title:"COD, COI & attribut du sujet",
+  venue:"BMO Field, Toronto — Phase de groupes",
+  badge:{name:"Le Buteur comme Mbappé", emoji:"⚡"},
+  lesson:`
+    <div class="lesson-block">
+      <h4>Le COD (complément d'objet direct)</h4>
+      <p>Il répond à la question <b>quoi ?</b> ou <b>qui ?</b> posée directement après le verbe, <b>sans préposition</b>. On peut le remplacer par <b>le / la / les</b>.</p>
+      <p class="ex">Haaland marque un but. (il marque quoi ? → un but) — Il le marque.</p>
+    </div>
+    <div class="lesson-block">
+      <h4>Le COI (complément d'objet indirect)</h4>
+      <p>Il répond à <b>à qui ?</b>, <b>à quoi ?</b>, <b>de qui ?</b>, <b>de quoi ?</b> et il est toujours introduit par une <b>préposition</b> (à, de...). On peut souvent le remplacer par <b>lui / leur</b>.</p>
+      <p class="ex">Olise pense à la finale. (il pense à quoi ? → à la finale)</p>
+    </div>
+    <div class="lesson-block">
+      <h4>Attention au piège : COI ou CC ?</h4>
+      <p>Un CC introduit par une préposition ressemble à un COI, mais il reste <b>mobile et supprimable</b>, contrairement au COI qui dépend du verbe.</p>
+      <p class="ex">Il tire à midi. (CC de temps, supprimable) ≠ Il pense à son capitaine. (COI, indispensable au verbe « penser »)</p>
+    </div>
+    <div class="lesson-block">
+      <h4>L'attribut du sujet</h4>
+      <p>Après un verbe d'état (être, sembler, paraître, devenir...), le mot qui décrit le sujet est un <b>attribut du sujet</b>, pas un COD : le sujet ne « reçoit » pas d'action.</p>
+      <p class="ex">Haaland est rapide. (attribut) ≠ Haaland marque un but rapidement. (COD + CC)</p>
+    </div>
+    <div class="note">Astuce : remplace le groupe par un pronom. Ça marche avec <b>le/la/les</b> → COD. Ça marche avec <b>lui/leur</b> → COI. Ça ne marche pas du tout, mais tu peux le déplacer/supprimer → CC ! Le COD va droit au but, sans détour, sans préposition — comme une frappe de Mbappé.</div>
+  `,
+  tiers:[
+    { name:"Découverte", bloom:"Mémoriser / Comprendre", questions:[
+      {type:"mcq", prompt:"Le COD répond à la question...", options:["quoi ? / qui ? (sans préposition)","où ?","à qui ? (avec préposition)","quand ?"], correct:0, explanation:"Le COD suit directement le verbe, sans préposition."},
+      {type:"mcq", prompt:"Le COI est toujours introduit par...", options:["une préposition (à, de...)","un article","un adverbe","rien, jamais de préposition"], correct:0, explanation:"C'est justement ce qui le distingue du COD : la présence d'une préposition."},
+      {type:"mcq", prompt:"Dans « L'entraîneur parle à ses joueurs. », « à ses joueurs » est...", options:["un COI","un COD","un CC de lieu","le sujet"], correct:0, explanation:"« parler à quelqu'un » : le complément dépend du verbe et est introduit par « à »."},
+      {type:"mcq", prompt:"Quel pronom remplace un COD ?", options:["le / la / les","lui / leur","y","en seulement"], correct:0, explanation:"le/la/les remplacent un COD ; lui/leur remplacent plutôt un COI de personne."}
+    ]},
+    { name:"Entraînement", bloom:"Appliquer / Analyser", questions:[
+      {type:"mcq", prompt:"Dans « L'arbitre siffle un penalty chaque fois qu'il le faut. », quel est le COD ?", options:["L'arbitre","siffle","un penalty","chaque fois"], correct:2, explanation:"siffle quoi ? → un penalty, sans préposition : c'est le COD."},
+      {type:"mcq", prompt:"Dans « Les joueurs obéissent à leur sélectionneur avec discipline. », quel est le COI ?", options:["Les joueurs","à leur sélectionneur","avec discipline","obéissent"], correct:1, explanation:"obéissent à qui ? → à leur sélectionneur, introduit par « à » : c'est le COI."},
+      {type:"mcq", prompt:"Dans « Haaland est épuisé après le match. », que représente « épuisé » ?", options:["l'attribut du sujet","le COD","le COI","le CC"], correct:0, explanation:"Après le verbe d'état « être », « épuisé » décrit le sujet Haaland : c'est un attribut."},
+      {type:"mcq", prompt:"Quelle phrase contient un COI ?", options:["Il pense à la finale.","Il marque un but.","Il court vite.","Il est content."], correct:0, explanation:"« pense à la finale » : complément introduit par « à », indispensable au verbe."}
+    ]},
+    { name:"Défi", bloom:"Analyser / Évaluer / Créer", questions:[
+      {type:"mcq", prompt:"Dans « L'entraîneur explique la tactique à ses joueurs patiemment. », que trouve-t-on ?", options:["un COD (la tactique) et un COI (à ses joueurs)","deux COD","deux COI","un COD et un CC seulement"], correct:0, explanation:"explique quoi ? → la tactique (COD) ; explique à qui ? → à ses joueurs (COI)."},
+      {type:"mcq", prompt:"« Olise offre une passe décisive à Haaland. » Combien de compléments du verbe (COD + COI) y a-t-il ?", options:["2 (un COD et un COI)","1 seulement","0","3"], correct:0, explanation:"offre quoi ? → une passe décisive (COD) ; offre à qui ? → à Haaland (COI)."},
+      {type:"mcq", prompt:"Dans « Il pense à son capitaine. » et « Il part à la mi-temps. », le groupe introduit par « à » a-t-il la même fonction ?", options:["Non : COI dans la première phrase, CC de temps dans la seconde","Oui, toujours COI","Oui, toujours CC","Non : CC puis COI"], correct:0, explanation:"« à son capitaine » dépend du verbe penser (COI) ; « à la mi-temps » est mobile/supprimable (CC)."},
+      {type:"open", prompt:"Mission bonus : écris une phrase sur le foot avec un verbe qui a À LA FOIS un COD et un COI (par exemple : offrir, donner, passer, envoyer, montrer...).", checklist:["Mon verbe a un complément qui répond à « quoi ? » sans préposition (COD).","Mon verbe a aussi un complément introduit par « à » ou « de » (COI).","Je peux remplacer mon COD par le/la/les et mon COI par lui/leur."]}
+    ]}
+  ]
+},
+{
+  id:"m3", num:3, icon:"🗝️",
+  title:"Leur / Leurs",
+  venue:"SoFi Stadium, Los Angeles — Huitièmes de finale",
+  badge:{name:"Le Prodige comme Doué", emoji:"🌟"},
+  lesson:`
+    <div class="lesson-block">
+      <h4>« leur » pronom (devant un verbe) → jamais de s</h4>
+      <p>Quand « leur » remplace « à eux / à elles » et se place devant un <b>verbe</b>, il est <b>invariable</b> : pas de s, même au pluriel.</p>
+      <p class="ex">L'arbitre leur parle. — Le sélectionneur leur a donné les consignes.</p>
+    </div>
+    <div class="lesson-block">
+      <h4>« leur / leurs » déterminant (devant un nom) → s'accorde</h4>
+      <p>Quand « leur » est placé devant un <b>nom</b>, c'est un déterminant possessif : il s'accorde avec ce nom. Un seul objet possédé → « leur » ; plusieurs → « leurs ».</p>
+      <p class="ex">Les Bleus rejoignent leur vestiaire (un seul vestiaire pour tous). Ils enfilent leurs crampons (plusieurs paires).</p>
+    </div>
+    <div class="note">Astuce imparable : remplace par <b>« lui »</b> → ça marche ? C'est le <b>pronom</b>, donc pas de s. Remplace par <b>« son/sa »</b> (singulier) ou <b>« ses »</b> (pluriel) → ça marche ? C'est le <b>déterminant</b>, il s'accorde avec le nom. Un geste précis à chaque fois, comme les contrôles de Désiré Doué.</div>
+  `,
+  tiers:[
+    { name:"Découverte", bloom:"Mémoriser / Comprendre", questions:[
+      {type:"mcq", prompt:"« L'entraîneur ___ a donné les consignes. » Que choisis-tu ?", options:["leur","leurs"], correct:0, explanation:"« leur » est ici un pronom devant le verbe « a donné » : il est invariable."},
+      {type:"mcq", prompt:"« Les joueurs rangent ___ affaires dans le vestiaire. » Que choisis-tu ?", options:["leur","leurs"], correct:1, explanation:"« leur » est ici un déterminant devant le nom pluriel « affaires » : il prend un s."},
+      {type:"mcq", prompt:"Quel mot est invariable et se place devant un verbe ?", options:["leur (pronom)","leurs (déterminant pluriel)","leur (déterminant singulier)","les deux sont variables"], correct:0, explanation:"Le pronom « leur » ne prend jamais de s, quel que soit le nombre de personnes."},
+      {type:"mcq", prompt:"Pour vérifier un déterminant « leur/leurs », on peut le remplacer par...", options:["son/sa (singulier) ou ses (pluriel)","lui","elle","aucune de ces réponses"], correct:0, explanation:"Le déterminant se comporte comme son/sa/ses selon le nombre du nom qui suit."}
+    ]},
+    { name:"Entraînement", bloom:"Appliquer", questions:[
+      {type:"fill", prompt:"Complète : « Les joueurs enfilent ___ crampons avant l'échauffement. »", accepted:["leurs"], explanation:"Déterminant devant le nom pluriel « crampons » → leurs."},
+      {type:"fill", prompt:"Complète : « L'arbitre ___ a montré un carton jaune. »", accepted:["leur"], explanation:"Pronom devant le verbe « a montré » → leur, invariable."},
+      {type:"mcq", prompt:"« Les deux équipes défendent leur but. » — ici « leur » est au singulier car...", options:["chaque équipe ne défend qu'un seul but (un seul but chacune)","c'est toujours singulier","« but » est un mot masculin","« leur » est un pronom ici"], correct:0, explanation:"Le déterminant s'accorde avec le nombre d'objets possédés, pas avec le nombre de possesseurs."},
+      {type:"fill", prompt:"Complète : « Le sélectionneur ___ a expliqué la tactique. »", accepted:["leur"], explanation:"Pronom devant le verbe « a expliqué » → leur, invariable."}
+    ]},
+    { name:"Défi", bloom:"Analyser / Créer", questions:[
+      {type:"fill", prompt:"Complète : « Les supporters ont oublié ___ drapeaux au stade. »", accepted:["leurs"], explanation:"Déterminant + nom pluriel « drapeaux » → leurs."},
+      {type:"fill", prompt:"Complète : « Le capitaine ___ rappelle de rester concentrés. »", accepted:["leur"], explanation:"Pronom devant le verbe « rappelle » → leur, invariable."},
+      {type:"mcq", prompt:"Quelle phrase est correctement orthographiée ?", options:["Ils ont perdu leurs maillots d'échauffement.","Ils ont perdu leur maillots d'échauffement.","Ils ont perdus leurs maillots d'échauffement.","Ils ont perdu leures maillots d'échauffement."], correct:0, explanation:"« leurs » déterminant + nom pluriel « maillots » ; le participe passé « perdu » reste invariable avec avoir ici."},
+      {type:"mcq", prompt:"Dans « L'arbitre leur a expliqué la décision, à eux et à leur capitaine. », « leur » (premier mot de la phrase) remplace...", options:["à eux (pluriel, pronom COI)","un nom singulier","un déterminant","rien de précis"], correct:0, explanation:"« leur » pronom remplace un groupe de personnes introduit par « à »."},
+      {type:"open", prompt:"Mission bonus : écris deux phrases sur une équipe de foot — une avec « leur » pronom (devant un verbe) et une avec « leurs » déterminant (devant un nom pluriel).", checklist:["Ma première phrase a « leur » juste avant un verbe conjugué, sans s.","Ma seconde phrase a « leurs » juste avant un nom au pluriel.","J'ai vérifié avec le test lui / ses."]}
+    ]}
+  ]
+},
+{
+  id:"m4", num:4, icon:"🛡️",
+  title:"Forme négative & forme affirmative",
+  venue:"Mercedes-Benz Stadium, Atlanta — Quarts de finale",
+  badge:{name:"Le Guerrier comme Ronaldo", emoji:"💪"},
+  lesson:`
+    <div class="lesson-block">
+      <h4>La négation de base</h4>
+      <p>La forme négative encadre le verbe avec <b>ne ... pas</b> (ou n'... pas devant une voyelle). Il existe aussi <b>ne...jamais</b>, <b>ne...plus</b>, <b>ne...rien</b>, <b>ne...personne</b>.</p>
+      <p class="ex">Il aime jouer les prolongations. → Il n'aime pas jouer les prolongations.</p>
+    </div>
+    <div class="lesson-block">
+      <h4>Aux temps composés</h4>
+      <p>Avec un temps composé (passé composé...), « ne » et « pas » encadrent l'<b>auxiliaire</b>, pas le participe passé.</p>
+      <p class="ex">Tu as marqué. → Tu n'as pas marqué.</p>
+    </div>
+    <div class="lesson-block">
+      <h4>Avec un infinitif</h4>
+      <p>Pour nier un infinitif, « ne pas » se place <b>juste avant</b> l'infinitif, sans le couper.</p>
+      <p class="ex">pouvoir tirer → ne pas pouvoir tirer.</p>
+    </div>
+    <div class="lesson-block">
+      <h4>Petit piège : du / de la / des</h4>
+      <p>Après une négation, « du / de la / des » devient généralement <b>de / d'</b>.</p>
+      <p class="ex">Il boit du jus d'orange à la mi-temps. → Il ne boit pas de jus d'orange à la mi-temps.</p>
+    </div>
+    <div class="note">Astuce : pour repasser à l'affirmatif, retire « ne...pas » (ou jamais/plus/rien/personne) et remets si besoin « du/de la/des ». Transformer un « non » en « oui », c'est un peu l'histoire de la carrière de Ronaldo : il n'a jamais rien lâché.</div>
+  `,
+  tiers:[
+    { name:"Découverte", bloom:"Mémoriser / Comprendre", questions:[
+      {type:"mcq", prompt:"Quelle est la structure de base de la négation en français ?", options:["ne (n') ... pas","pas ... ne","non ... pas","ne ... non"], correct:0, explanation:"« ne » se place avant le verbe, « pas » après (ou après l'auxiliaire)."},
+      {type:"fill", prompt:"Transforme à la forme négative : « Il aime les prolongations. »", accepted:["il n'aime pas les prolongations","il naime pas les prolongations"], explanation:"On encadre le verbe conjugué : Il n'aime pas les prolongations."},
+      {type:"mcq", prompt:"Que devient souvent « du / de la / des » après une négation ?", options:["de / d'","reste pareil","disparaît complètement","devient « des » toujours"], correct:0, explanation:"Il boit du jus d'orange → Il ne boit pas de jus d'orange."},
+      {type:"mcq", prompt:"Quelle négation signifie le contraire de « toujours » ?", options:["ne ... jamais","ne ... plus","ne ... rien","ne ... personne"], correct:0, explanation:"« jamais » est l'opposé de « toujours »."}
+    ]},
+    { name:"Entraînement", bloom:"Appliquer", questions:[
+      {type:"fill", prompt:"Mets à la forme négative : « Nous mangeons de la viande avant le match. »", accepted:["nous ne mangeons pas de viande avant le match"], explanation:"« de la » devient « de » après la négation."},
+      {type:"fill", prompt:"Mets à la forme négative : « Tu as fini l'échauffement. »", accepted:["tu n'as pas fini l'echauffement","tu nas pas fini lechauffement"], explanation:"On encadre l'auxiliaire « as » : Tu n'as pas fini l'échauffement."},
+      {type:"fill", prompt:"Mets à la forme négative l'infinitif : « pouvoir marquer »", accepted:["ne pas pouvoir marquer"], explanation:"« ne pas » se place juste avant l'infinitif, sans le couper."},
+      {type:"fill", prompt:"Mets à la forme affirmative : « Elle n'a pas vu le carton rouge. »", accepted:["elle a vu le carton rouge"], explanation:"On retire simplement « ne...pas »."}
+    ]},
+    { name:"Défi", bloom:"Analyser / Créer", questions:[
+      {type:"fill", prompt:"Transforme au passé composé négatif : « Il a raté tout le penalty. »", accepted:["il n'a pas rate tout le penalty","il na pas rate tout le penalty"], explanation:"On encadre l'auxiliaire « a » : Il n'a pas raté tout le penalty."},
+      {type:"fill", prompt:"Transforme avec « ne...plus » : « Elle joue encore les prolongations. »", accepted:["elle ne joue plus les prolongations"], explanation:"« ne...plus » marque la fin d'une action qui durait."},
+      {type:"mcq", prompt:"Quelle phrase est correctement construite à la forme négative ?", options:["Je ne vois personne sur le banc.","Je vois ne personne sur le banc.","Je ne vois pas personne sur le banc.","Je vois personne pas sur le banc."], correct:0, explanation:"« ne » avant le verbe, « personne » après : Je ne vois personne."},
+      {type:"open", prompt:"Mission bonus : écris une phrase affirmative sur le foot avec un verbe à l'infinitif (ex : « je veux + infinitif »), puis transforme-la à la forme négative.", checklist:["Ma phrase affirmative contient bien un infinitif après un premier verbe conjugué.","Dans ma phrase négative, « ne pas » encadre bien l'infinitif sans le couper.","J'ai relu à voix haute : ça sonne juste."]}
+    ]}
+  ]
+},
+{
+  id:"m5", num:5, icon:"🏆",
+  title:"Transposition au futur simple",
+  venue:"Irissarry Stadium — La Finale, 19 juillet",
+  badge:{name:"Le Stratège du Futur comme Bellingham", emoji:"🔮"},
+  lesson:`
+    <div class="lesson-block">
+      <h4>La règle générale</h4>
+      <p>Pour les verbes réguliers, on part de l'<b>infinitif</b> et on ajoute : -ai, -as, -a, -ons, -ez, -ont.</p>
+      <p class="ex">jouer → je jouer<u>ai</u>, tu jouer<u>as</u>, nous jouer<u>ons</u>...</p>
+    </div>
+    <div class="lesson-block">
+      <h4>Les radicaux irréguliers à mémoriser</h4>
+      <ul>
+        <li>être → ser- (je serai)</li>
+        <li>avoir → aur- (j'aurai)</li>
+        <li>faire → fer- (je ferai)</li>
+        <li>aller → ir- (j'irai)</li>
+        <li>dire → dir- (je dirai)</li>
+        <li>venir → viendr- (je viendrai)</li>
+        <li>pouvoir → pourr- (je pourrai)</li>
+        <li>voir → verr- (je verrai)</li>
+        <li>vouloir → voudr- (je voudrai)</li>
+        <li>prendre → prendr- (je prendrai)</li>
+      </ul>
+    </div>
+    <div class="note">Astuce : dans tous les cas, les terminaisons du futur ressemblent au verbe « avoir » au présent : ai, as, a, ons, ez, ont. Seul le radical change ! La finale, elle, se joue le 19 juillet à Irissarry Stadium — un peu comme un bon milieu de terrain, pense toujours un coup à l'avance, comme Bellingham.</div>
+  `,
+  tiers:[
+    { name:"Découverte", bloom:"Mémoriser / Comprendre", questions:[
+      {type:"fill", prompt:"Conjugue « jouer » au futur simple avec « je ».", accepted:["je jouerai"], explanation:"Infinitif + terminaison -ai : je jouerai."},
+      {type:"fill", prompt:"Conjugue « être » au futur simple avec « il ».", accepted:["il sera"], explanation:"Radical irrégulier ser- + a : il sera."},
+      {type:"mcq", prompt:"Quelle est la terminaison du futur simple pour « nous » ?", options:["-ons","-ez","-ont","-ai"], correct:0, explanation:"nous jouer-ons, nous ser-ons, etc."},
+      {type:"fill", prompt:"Conjugue « avoir » au futur avec « ils ».", accepted:["ils auront"], explanation:"Radical irrégulier aur- + ont : ils auront."}
+    ]},
+    { name:"Entraînement", bloom:"Appliquer", questions:[
+      {type:"fill", prompt:"Transpose au futur : « Je fais des passes précises. »", accepted:["je ferai des passes precises","je ferai des passes précises"], explanation:"faire → fer- : je ferai des passes précises."},
+      {type:"fill", prompt:"Transpose au futur : « Nous allons au stade. »", accepted:["nous irons au stade"], explanation:"aller → ir- : nous irons au stade."},
+      {type:"fill", prompt:"Transpose au futur : « Tu prends le ballon. »", accepted:["tu prendras le ballon"], explanation:"prendre est régulier au futur : tu prendras."},
+      {type:"fill", prompt:"Transpose au futur : « Ils viennent en finale. »", accepted:["ils viendront en finale"], explanation:"venir → viendr- : ils viendront en finale."}
+    ]},
+    { name:"Défi", bloom:"Analyser / Créer", questions:[
+      {type:"fill", prompt:"Transpose au futur : « Il fait beau et nous faisons un grand match. »", accepted:["il fera beau et nous ferons un grand match"], explanation:"Les deux verbes « faire » deviennent fera / ferons."},
+      {type:"fill", prompt:"Transpose au futur : « Vous voyez la finale et vous pouvez applaudir. »", accepted:["vous verrez la finale et vous pourrez applaudir"], explanation:"voir → verr- ; pouvoir → pourr-."},
+      {type:"mcq", prompt:"Quel est le radical irrégulier du futur pour le verbe « vouloir » ?", options:["voudr-","voulr-","veur-","voudra-"], correct:0, explanation:"je voudrai, tu voudras, il voudra..."},
+      {type:"open", prompt:"Mission bonus : écris un petit texte de 2 phrases au présent racontant ta journée de finale de Coupe du Monde 2026, puis transpose-le entièrement au futur.", checklist:["Mes 2 phrases au présent sont claires et correctes.","J'ai bien changé TOUS les verbes conjugués au futur.","J'ai vérifié les radicaux irréguliers si j'en ai utilisé."]}
+    ]}
+  ]
+}
+];
+
+/* ============================= STATE ============================= */
+
+const STORAGE_KEY = "grammaireMondial2026_v1";
+function defaultState(){
+  const progress = {};
+  MODULES.forEach(m=>{
+    progress[m.id] = { tiers:[null,null,null], badge:false };
+  });
+  return { xp:0, progress, badges:[], history:[] };
+}
+let state = loadState();
+function loadState(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw) return defaultState();
+    const parsed = JSON.parse(raw);
+    const base = defaultState();
+    return Object.assign(base, parsed, {progress:Object.assign(base.progress, parsed.progress||{})});
+  }catch(e){ return defaultState(); }
+}
+function saveState(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+
+/* ============================= HELPERS ============================= */
+
+function normalize(str){
+  return str.toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+    .replace(/[’]/g,"'")
+    .replace(/[^a-z0-9' ]/g," ")
+    .replace(/\s+/g," ")
+    .trim();
+}
+
+function currentRank(){
+  const totalPossible = MODULES.reduce((s,m)=> s + m.tiers.reduce((s2,t)=> s2+t.questions.length,0), 0);
+  const pct = totalPossible ? Math.round((state.xp/ (totalPossible*10)) * 100) : 0;
+  let rank = RANKS[0];
+  RANKS.forEach(r=>{ if(pct >= r.min) rank = r; });
+  return {pct, rank};
+}
+
+function moduleMastered(mid){
+  const p = state.progress[mid];
+  return p.tiers.every(t=> t && t.pct>=70);
+}
+
+/* ============================= RENDER: NAV ============================= */
+
+const tabsNav = document.getElementById("tabsNav");
+let activeView = "dashboard";
+let activeModule = null;
+let activeTierIdx = 0;
+
+function renderNav(){
+  tabsNav.innerHTML = "";
+  const dashBtn = makeTab("📋 Tableau de bord", activeView==="dashboard", ()=> switchView("dashboard"));
+  tabsNav.appendChild(dashBtn);
+  MODULES.forEach((m, idx)=>{
+    const prevMastered = idx===0 ? true : moduleMastered(MODULES[idx-1].id);
+    const btn = makeTab(`${m.icon} Match n°${m.num}`, activeView==="module" && activeModule===m.id, ()=>{
+      if(!prevMastered){ flashLocked(); return; }
+      openModule(m.id);
+    });
+    if(!prevMastered){
+      const lock = document.createElement("span"); lock.className="lock"; lock.textContent="🔒"; btn.appendChild(lock);
+    }
+    tabsNav.appendChild(btn);
+  });
+}
+function makeTab(label, active, onClick){
+  const b = document.createElement("button");
+  b.className = "tab-btn" + (active ? " active":"");
+  b.textContent = label;
+  b.onclick = onClick;
+  return b;
+}
+function flashLocked(){
+  alert("🔒 Ce match n'est pas encore débloqué. Termine les 3 niveaux du match précédent (au moins 70% à chaque niveau) pour continuer la campagne vers la finale !");
+}
+
+/* ============================= RENDER: DASHBOARD ============================= */
+
+function renderDashboard(){
+  const {pct, rank} = currentRank();
+  document.getElementById("rankIcon").textContent = rank.icon;
+  document.getElementById("rankName").textContent = rank.name;
+  document.getElementById("xpFill").style.width = Math.min(100,pct) + "%";
+  document.getElementById("xpNum").textContent = state.xp + " XP · " + pct + "% du dossier complet";
+
+  const statGrid = document.getElementById("statGrid");
+  const solved = MODULES.filter(m=> moduleMastered(m.id)).length;
+  const attempts = state.history.length;
+  statGrid.innerHTML = `
+    <div class="stat-card"><div class="num">${solved}/5</div><div class="lab">Matchs remportés</div></div>
+    <div class="stat-card"><div class="num">${state.xp}</div><div class="lab">Points d'expérience</div></div>
+    <div class="stat-card"><div class="num">${attempts}</div><div class="lab">Sessions d'entraînement</div></div>
+    <div class="stat-card"><div class="num">${state.badges.length}</div><div class="lab">Badges obtenus</div></div>
+  `;
+
+  const shelf = document.getElementById("badgeShelf");
+  shelf.innerHTML = "";
+  MODULES.forEach(m=>{
+    const got = state.badges.includes(m.id);
+    shelf.appendChild(badgeSlot(m.badge.emoji, m.badge.name, got));
+  });
+  shelf.appendChild(badgeSlot("🎯", "Décisif comme Haaland", state.badges.includes("perfect")));
+  shelf.appendChild(badgeSlot("✨", "MVP comme Olise", state.badges.includes("all5")));
+
+  const tbody = document.querySelector("#journalTable tbody");
+  tbody.innerHTML = "";
+  if(state.history.length===0){
+    tbody.innerHTML = `<tr><td colspan="4" style="opacity:.6;">Aucun entraînement disputé pour l'instant. Choisis un match pour commencer !</td></tr>`;
+  } else {
+    state.history.slice().reverse().slice(0,30).forEach(h=>{
+      const tr = document.createElement("tr");
+      tr.innerHTML = `<td>${h.date}</td><td>${h.module}</td><td>${h.tier}</td><td>${h.score}%</td>`;
+      tbody.appendChild(tr);
+    });
+  }
+}
+function badgeSlot(emoji, name, got){
+  const d = document.createElement("div");
+  d.className = "badge-slot" + (got ? "" : " locked");
+  d.innerHTML = `<div class="em">${emoji}</div><div class="nm">${name}</div>`;
+  return d;
+}
+
+/* ============================= RENDER: MODULE ============================= */
+
+function openModule(mid){
+  activeModule = mid;
+  activeTierIdx = 0;
+  switchView("module");
+}
+
+function switchView(view){
+  activeView = view;
+  document.querySelectorAll("section.view").forEach(s=>s.classList.remove("active"));
+  document.getElementById("view-" + view).classList.add("active");
+  renderNav();
+  if(view==="dashboard") renderDashboard();
+  if(view==="module") renderModule();
+}
+
+function renderModule(){
+  const m = MODULES.find(x=>x.id===activeModule);
+  const p = state.progress[m.id];
+  const dossier = document.getElementById("moduleDossier");
+
+  let tierChips = m.tiers.map((t, i)=>{
+    const prevOk = i===0 ? true : (p.tiers[i-1] && p.tiers[i-1].pct>=70);
+    const passed = p.tiers[i] && p.tiers[i].pct>=70;
+    const cls = ["tier-chip"];
+    if(i===activeTierIdx) cls.push("selected");
+    if(!prevOk) cls.push("locked");
+    if(passed) cls.push("passed");
+    const scoreTxt = p.tiers[i] ? `Meilleur score : ${p.tiers[i].pct}%` : "Pas encore tenté";
+    return `<button class="${cls.join(' ')}" data-tier="${i}" ${!prevOk?'disabled':''}>
+      <span class="tname">${t.name}</span><br><span class="tbloom">${t.bloom}</span>
+      <span class="tscore">${prevOk ? scoreTxt : '🔒 termine le niveau précédent'}</span>
+    </button>`;
+  }).join("");
+
+  dossier.innerHTML = `
+    <span class="eyebrow">Match n°${m.num} · ${m.venue}</span>
+    <h2 class="case-title">${m.icon} ${m.title}</h2>
+    <p class="case-sub">Badge à débloquer : <b>${m.badge.emoji} ${m.badge.name}</b></p>
+
+    <div style="display:flex; gap:10px; margin:14px 0 20px;">
+      <button class="btn ghost" id="btnLesson">📖 Cours</button>
+      <button class="btn ghost" id="btnQuiz">🎯 Quiz</button>
+    </div>
+
+    <div id="lessonPane">${m.lesson}
+      <button class="btn primary" id="toQuizBtn">Commencer le quiz →</button>
+    </div>
+
+    <div id="quizPane" style="display:none;">
+      <div class="tier-row">${tierChips}</div>
+      <div id="quizHost"></div>
+    </div>
+  `;
+
+  document.getElementById("btnLesson").onclick = ()=>{ show("lesson"); };
+  document.getElementById("btnQuiz").onclick = ()=>{ show("quiz"); startTier(activeTierIdx); };
+  document.getElementById("toQuizBtn").onclick = ()=>{ show("quiz"); startTier(activeTierIdx); };
+
+  function show(which){
+    document.getElementById("lessonPane").style.display = which==="lesson" ? "block":"none";
+    document.getElementById("quizPane").style.display = which==="quiz" ? "block":"none";
+  }
+
+  dossier.querySelectorAll(".tier-chip").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      if(btn.disabled) return;
+      activeTierIdx = parseInt(btn.dataset.tier,10);
+      show("quiz");
+      startTier(activeTierIdx);
+      renderModule(); // refresh selection highlight
+      show("quiz");
+    });
+  });
+}
+
+/* ============================= QUIZ ENGINE ============================= */
+
+let quizCtx = null;
+
+function startTier(tierIdx){
+  const m = MODULES.find(x=>x.id===activeModule);
+  const tier = m.tiers[tierIdx];
+  quizCtx = { m, tier, tierIdx, i:0, correctCount:0, results:[] };
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const host = document.getElementById("quizHost");
+  if(!host) return;
+  const {m, tier, i} = quizCtx;
+  if(i >= tier.questions.length){ renderTierResult(); return; }
+  const q = tier.questions[i];
+
+  let progressHtml = tier.questions.map((_,idx)=>{
+    let cls = "";
+    if(idx < i) cls = quizCtx.results[idx] ? "done" : "wrong";
+    else if(idx===i) cls = "current";
+    return `<span class="${cls}"></span>`;
+  }).join("");
+
+  let body = "";
+  if(q.type==="mcq"){
+    body = `<div class="opt-list">${q.options.map((o,idx)=>`<button class="opt" data-idx="${idx}">${o}</button>`).join("")}</div>`;
+  } else if(q.type==="fill"){
+    body = `<div class="fill-row"><input type="text" id="fillInput" placeholder="Écris ta réponse ici..." autocomplete="off"></div>
+            <div class="q-footer"><span></span><button class="btn primary" id="fillSubmit">Vérifier</button></div>`;
+  } else if(q.type==="open"){
+    body = `<textarea class="open-input" id="openInput" placeholder="Écris ta phrase ici..."></textarea>
+      <div class="checklist" id="checklistBox" style="display:none;">
+        ${q.checklist.map((c,idx)=>`<label><input type="checkbox" data-c="${idx}"> ${c}</label>`).join("")}
+      </div>
+      <div class="q-footer">
+        <button class="btn ghost" id="revealBtn">J'ai fini, montre les critères</button>
+        <button class="btn primary" id="openSubmit" style="display:none;">Valider mon auto-évaluation</button>
+      </div>`;
+  }
+
+  host.innerHTML = `
+    <div class="quiz-progress">${progressHtml}</div>
+    <div class="q-prompt">${q.prompt}</div>
+    ${body}
+    <div class="feedback" id="feedback"></div>
+  `;
+
+  if(q.type==="mcq"){
+    host.querySelectorAll(".opt").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        const idx = parseInt(btn.dataset.idx,10);
+        const ok = idx===q.correct;
+        host.querySelectorAll(".opt").forEach((b,bi)=>{
+          b.disabled = true;
+          if(bi===q.correct) b.classList.add("correct");
+          else if(bi===idx) b.classList.add("incorrect");
+        });
+        showFeedback(ok, q.explanation);
+        recordAnswer(ok);
+      });
+    });
+  } else if(q.type==="fill"){
+    const input = document.getElementById("fillInput");
+    const submit = document.getElementById("fillSubmit");
+    const doSubmit = ()=>{
+      const val = normalize(input.value);
+      const ok = q.accepted.some(a=> normalize(a)===val);
+      input.disabled = true; submit.disabled = true;
+      showFeedback(ok, q.explanation + (ok? "" : ` (réponse attendue : « ${q.accepted[0]} »)`));
+      recordAnswer(ok);
+    };
+    submit.addEventListener("click", doSubmit);
+    input.addEventListener("keydown", e=>{ if(e.key==="Enter") doSubmit(); });
+  } else if(q.type==="open"){
+    document.getElementById("revealBtn").addEventListener("click", ()=>{
+      document.getElementById("checklistBox").style.display = "block";
+      document.getElementById("openSubmit").style.display = "inline-block";
+      document.getElementById("revealBtn").style.display = "none";
+    });
+    document.getElementById("openSubmit").addEventListener("click", ()=>{
+      const boxes = host.querySelectorAll("[data-c]");
+      const allChecked = Array.from(boxes).every(b=>b.checked);
+      boxes.forEach(b=> b.disabled=true);
+      document.getElementById("openSubmit").disabled = true;
+      showFeedback(allChecked, allChecked ? "But magnifique ! Tu progresses vers le titre de Ballon d'Or." : "Pas encore tous les critères validés : relis ta phrase et corrige-la si besoin, un bon joueur retravaille toujours son geste !");
+      recordAnswer(allChecked);
+    });
+  }
+}
+
+function showFeedback(ok, explanation){
+  const fb = document.getElementById("feedback");
+  fb.className = "feedback show " + (ok? "ok":"ko");
+  fb.innerHTML = (ok? "✔ Excellent, bonne réponse !" : "✘ Pas tout à fait...") + `<div class="expl">${explanation}</div>
+    <div style="margin-top:10px;"><button class="btn primary" id="nextBtn">${quizCtx.i+1 < quizCtx.tier.questions.length ? "Question suivante →" : "Voir mon résultat →"}</button></div>`;
+  document.getElementById("nextBtn").addEventListener("click", ()=>{
+    quizCtx.i++;
+    renderQuestion();
+  });
+}
+
+function recordAnswer(ok){
+  quizCtx.results[quizCtx.i] = ok;
+  if(ok){ quizCtx.correctCount++; state.xp += 10; }
+  saveState();
+  renderDashboardSilently();
+}
+function renderDashboardSilently(){
+  if(activeView==="dashboard") renderDashboard();
+  const {rank, pct} = currentRank();
+  document.getElementById("rankIcon").textContent = rank.icon;
+  document.getElementById("rankName").textContent = rank.name;
+  document.getElementById("xpFill").style.width = Math.min(100,pct) + "%";
+  document.getElementById("xpNum").textContent = state.xp + " XP · " + pct + "% du dossier complet";
+}
+
+function renderTierResult(){
+  const host = document.getElementById("quizHost");
+  const {m, tier, tierIdx, correctCount} = quizCtx;
+  const total = tier.questions.length;
+  const pct = Math.round((correctCount/total)*100);
+  const passed = pct >= 70;
+  const firstTry = !state.progress[m.id].tiers[tierIdx];
+
+  state.progress[m.id].tiers[tierIdx] = { pct: Math.max(pct, (state.progress[m.id].tiers[tierIdx]||{pct:0}).pct) };
+  state.history.push({ date:new Date().toLocaleDateString("fr-FR"), module:`Match n°${m.num}`, tier:tier.name, score:pct });
+
+  let badgeHtml = "";
+  if(passed && pct===100 && firstTry && !state.badges.includes("perfect")){
+    state.badges.push("perfect");
+    badgeHtml += badgePopHtml("🎯","Décisif comme Haaland");
+  }
+  if(passed && moduleMastered(m.id) && !state.badges.includes(m.id)){
+    state.badges.push(m.id);
+    badgeHtml += badgePopHtml(m.badge.emoji, m.badge.name);
+  }
+  if(MODULES.every(mm=>moduleMastered(mm.id)) && !state.badges.includes("all5")){
+    state.badges.push("all5");
+    badgeHtml += badgePopHtml("✨","MVP comme Olise");
+  }
+  saveState();
+
+  host.innerHTML = `
+    <div class="result-card">
+      <div class="big">${passed ? "🏆" : "🔁"}</div>
+      <h3 style="margin-bottom:2px;">${passed ? "But marqué, match remporté !" : "Ce n'est pas encore la victoire..."}</h3>
+      <p style="opacity:.8;">Score : <b>${pct}%</b> (${correctCount}/${total} bonnes réponses) — seuil de réussite : 70%</p>
+      <div>${badgeHtml}</div>
+      <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:16px;">
+        <button class="btn ghost" id="retryBtn">🔁 Retenter ce niveau</button>
+        ${passed && tierIdx < m.tiers.length-1 ? `<button class="btn primary" id="nextTierBtn">Niveau suivant →</button>` : ""}
+        <button class="btn ghost" id="dashBtn">📋 Retour au tableau de bord</button>
+      </div>
+    </div>
+  `;
+  document.getElementById("retryBtn").addEventListener("click", ()=> startTier(tierIdx));
+  document.getElementById("dashBtn").addEventListener("click", ()=> switchView("dashboard"));
+  const nextBtn = document.getElementById("nextTierBtn");
+  if(nextBtn) nextBtn.addEventListener("click", ()=>{ activeTierIdx = tierIdx+1; renderModule(); document.getElementById("btnQuiz").click(); startTier(activeTierIdx); });
+
+  renderNav();
+}
+function badgePopHtml(emoji, name){
+  return `<div class="badge-pop"><div class="em">${emoji}</div><div class="nm">${name}</div></div>`;
+}
+
+/* ============================= PARENT PANEL ============================= */
+
+const parentToggle = document.getElementById("parentToggle");
+parentToggle.addEventListener("click", ()=>{
+  if(activeView==="parents"){ switchView("dashboard"); parentToggle.textContent = "👪 Espace parents"; }
+  else { activeView="parents";
+    document.querySelectorAll("section.view").forEach(s=>s.classList.remove("active"));
+    document.getElementById("view-parents").classList.add("active");
+    parentToggle.textContent = "🔙 Retour au jeu";
+  }
+});
+document.getElementById("resetBtn").addEventListener("click", ()=>{
+  if(confirm("Cette action efface tous les badges, scores et l'historique. Continuer ?")){
+    state = defaultState(); saveState(); switchView("dashboard");
+  }
+});
+
+/* ============================= INIT ============================= */
+renderNav();
+renderDashboard();
+</script>
+</body>
+</html>
